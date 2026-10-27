@@ -1,0 +1,17 @@
+# IDE
+.idea/
+.vscode/
+
+# 本地计划与证据（见 SPEC.md 第 6 节）
+.plan/
+.evidence-deny
+
+# 构建产物
+dist/
+build/
+out/
+target/
+
+# 系统文件
+.DS_Store
+Thumbs.db
