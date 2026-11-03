@@ -14,6 +14,8 @@
 
 **分档**：轻档。不涉及外部写、权限、数据迁移、对外契约、跨模块或交接。
 
+**分支**：`fix/<tool>/t-18-config-arg`，从 `develop` 创建。
+
 **计划**：不建任务文件；在对话中列出改动点：参数解析分支、错误信息、三条测试。
 
 **技能确认**：询问是否启用 ponytail，用户选择 `full`。
@@ -62,6 +64,8 @@ Unverified: Windows path case (non-blocking; follow-up T-20)
 需求涉及外部写和凭据，先用 grilling 澄清了幂等、超时和测试账号边界。
 
 **分档**：完整档。命中外部写、权限/凭据、对外契约、跨模块。
+
+**分支**：`feat/<tool>/t-19-mail-api`，从 `develop` 创建；worktree 位于 `../<repo>-wt/t-19-mail-api/`。
 
 **计划**（任务文件 `tasks/2026-10-22-t-19-mail-api.md`）：
 

@@ -10,7 +10,7 @@
 | `SPEC.md` | 当前基线：范围、需求与 AC、架构边界、对外契约、数据模型。 |
 | `CHANGELOG.md` | 基线变更记录。 |
 | `TASK.md` | 任务状态、档位和证据位置；完整档任务在 `tasks/`。 |
-| `project-conventions.md` | 构建、测试、凭据、Git 提交和首次推送细则。 |
+| `project-conventions.md` | 构建、测试、凭据、Git 分支、提交和首次推送细则。 |
 | `templates/` | SPEC 和完整档任务骨架。 |
 | `examples/walkthrough.md` | 轻档和完整档的纸面示例。 |
 | `scripts/` | 可选：提交信息安全检查钩子。 |
