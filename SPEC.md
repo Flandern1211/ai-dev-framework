@@ -22,6 +22,7 @@
 | --- | --- |
 | `AGENTS.md` | 共同入口：授权、安全、工作区、Git 边界和默认执行流程。 |
 | `SPEC.md` | 当前基线：范围、需求与 AC、架构边界、对外契约、数据模型和系统级设计。 |
+| `docs/PRD.md`（产品仓库可选） | 产品意图、目标用户、使用场景、范围和成功指标。 |
 | `CHANGELOG.md` | 基线变更记录。 |
 | `TASK.md` | 任务状态、档位、依赖和证据位置；完整档任务正文在 `tasks/`。 |
 | `project-conventions.md` | 构建、测试、凭据、Git 分支、提交和首次推送细则。 |
@@ -34,6 +35,7 @@
 4. `AGENTS.md` 规定操作边界和默认流程；`project-conventions.md` 规定工程执行细则。
 5. 同一主题只保留一个权威正文；其他文件用链接引用。
 6. README、示例、历史材料和归档材料不是当前基线。
+7. 产品仓库可增加 `docs/PRD.md`；PRD 管产品意图和范围，SPEC 管验收、架构边界、契约和数据模型；两者冲突时停止实现，先修正文档。
 
 `SPEC.md` 承载系统级设计；完整档任务文件承载任务级设计和执行计划；不另建通用设计文档。
 
@@ -84,17 +86,11 @@
 
 ## 6. 分支、并行与 worktree
 
-1. 每个仓库有且只有一个当前集成分支，默认 `develop`；`main` 为发布分支。集成分支接收任务分支和治理分支合并并维护 `TASK.md`；`main` 只接收经授权的集成分支合并。
-2. 任务分支从集成分支或已登记依赖分支创建，命名 `<type>/<tool>/t-<编号>-<名称>`；治理和基线变更分别使用 `gov-` 和 `base-` 段。治理分支默认从集成分支创建并合回；不设长期讨论分支。需要独立文档发布入口时，产品仓库可声明固定的文档集成分支，治理分支从其创建并合回，再同步到集成分支。
-3. 未经用户明确允许，不得在集成分支或 `main` 上直接提交任务改动；允许主 agent 在集成分支提交仅含 `TASK.md` 的记账变更。
-4. 拆分不自动等于串行：无逻辑依赖、触碰范围不重叠且无共享未合入契约时默认并行；存在依赖或重叠时串行，判定见 `project-conventions.md` 第 6.9 节。并行任务各自使用独立 worktree，一个 worktree 只检出一个任务分支；worktree 放在仓库外同级 `<repo>-wt/t-<编号>-<名称>/`。
-5. `TASK.md` 只在集成分支由主 agent 维护；worktree 和任务分支不直接修改它，使用本地未提交的 `.plan/T-xx.md` 记录计划、进度和交接信息。`.plan/` 和 `.evidence-deny` 应加入 `.gitignore`。
-6. 任务或治理分支合入其集成分支并验证后才可清理 worktree 和本地分支；未合入前不得清理。合并时由主 agent 更新 `TASK.md`，回填提交号和证据位置。
-7. 跨会话、跨 agent 或多人协作的任务按完整档处理。
+分支、worktree、并行判定和合并清理细则见 `project-conventions.md` 第 6 节。
 
 ## 7. 采用与迁移
 
-1. 产品仓库复制五个文件：`AGENTS.md`、`SPEC.md`、`CHANGELOG.md`、`TASK.md`、`project-conventions.md`。
+1. 产品仓库复制五个文件：`AGENTS.md`、`SPEC.md`、`CHANGELOG.md`、`TASK.md`、`project-conventions.md`；需要区分产品意图和验收时，可增加 `docs/PRD.md`。
 2. 用 `templates/SPEC.md` 建立产品基线，用 `templates/TASK-full.md` 建立完整档任务文件。
 3. 建立 `main` 和 `develop` 两个长期分支：`develop` 接收任务合并，`main` 只接收发布合并。
 4. 填写构建、测试、凭据、外部写和发布流程；未实现的命令不得写成可用。
