@@ -11,6 +11,7 @@
 | `AGENTS.md` | 共同入口：授权、安全、工作区、Git 边界，以及默认执行流程。 |
 | `SPEC.md` | 当前基线：范围、需求与 AC、架构边界、对外契约、数据模型和系统级设计。 |
 | `docs/PRD.md`（产品仓库可选） | 产品意图、目标用户、使用场景、范围和成功指标。 |
+| `openapi.yaml` / `schema/`（产品仓库可选） | 对外 API 的机器可读契约源；`SPEC.md` 只链接。 |
 | `CHANGELOG.md` | 基线变更记录。 |
 | `TASK.md` | 任务状态、档位和证据位置；完整档任务在 `tasks/`。 |
 | `project-conventions.md` | 构建、测试、凭据、Git 分支、提交和首次推送细则。 |
@@ -20,7 +21,7 @@
 
 ## 2. 采用
 
-1. 复制五个文件到产品仓库根目录：`AGENTS.md`、`SPEC.md`、`CHANGELOG.md`、`TASK.md`、`project-conventions.md`；需要区分产品意图和验收时，可增加 `docs/PRD.md`。
+1. 复制五个文件到产品仓库根目录：`AGENTS.md`、`SPEC.md`、`CHANGELOG.md`、`TASK.md`、`project-conventions.md`；需要区分产品意图和验收时，可增加 `docs/PRD.md`；有对外 API 时增加 OpenAPI/schema 契约文件，`SPEC.md` 只链接。
 2. 用 `templates/SPEC.md` 建立基线，填写构建、测试、凭据和发布流程。
 3. 新任务按 `AGENTS.md` 第 3 节对齐、判断设计充分性、拆分和分档。
 4. 其他 AI 工具入口文件引用 `AGENTS.md`，不复制另一套规则。
@@ -28,7 +29,7 @@
 
 ## 3. 权威关系
 
-`AGENTS.md` 管操作边界和流程；`SPEC.md` 管当前基线；`CHANGELOG.md` 管基线变更；`TASK.md` 管任务状态和证据位置；`project-conventions.md` 管工程细则。README 和 `examples/` 不是权威正文。
+`AGENTS.md` 管操作边界和流程；`SPEC.md` 管当前基线；`CHANGELOG.md` 管基线变更；`TASK.md` 管任务状态和证据位置；`project-conventions.md` 管工程细则；对外 API 以 OpenAPI/schema 文件为权威正文，`SPEC.md` 只链接。README 和 `examples/` 不是权威正文。
 
 ## 4. 维护
 
