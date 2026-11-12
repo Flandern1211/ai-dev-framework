@@ -2,7 +2,7 @@
 .idea/
 .vscode/
 
-# 本地计划与证据（见 SPEC.md 第 6 节）
+# 本地计划与证据（见 project-conventions.md 第 6.7～6.8 节）
 .plan/
 .evidence-deny
 
