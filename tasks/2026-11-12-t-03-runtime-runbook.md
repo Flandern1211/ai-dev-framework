@@ -10,6 +10,7 @@
 | 任务分支 | `docs/zcode/gov-runtime-runbook` |
 | 合并目标 | `develop`（先合入 T-02） |
 | worktree | `../ai-dev-framework-wt/gov-profile-decision-model` |
+| 集成分支内容提交 | `3c28372` |
 
 ## 1. 范围
 
@@ -39,7 +40,7 @@
 
 | 层级 | AC | 命令或步骤 | 环境 | 结果 | 🔴 未验证 |
 | --- | --- | --- | --- | --- | --- |
-| 文档一致性 | AC-GOV-04/05 | `rg` 核对运行设计/RUNBOOK 分工、触发条件、授权边界、链接及目录；`git diff --check` | 本地 | 通过：职责、触发条件和授权边界一致；模板存在且根目录无空手册；忽略规则未固化手册或实验目录 | 无 |
+| 文档一致性 | AC-GOV-04/05 | `rg -n 'RUNBOOK|运行设计|运行手册|真实部署|操作授权' AGENTS.md SPEC.md project-conventions.md README.md templates examples tasks`；`test -f templates/RUNBOOK.md && test ! -e docs/RUNBOOK.md`；`rg -n '^(demo/|demos/|experiments/|RUNBOOK.md|docs/RUNBOOK.md)$' .gitignore`（预期无输出）；`git diff --check` | 本地 | 通过：职责、触发条件和授权边界一致；模板存在且根目录无空手册；忽略规则未固化手册或实验目录 | 无 |
 
 外部写调用数：0
 

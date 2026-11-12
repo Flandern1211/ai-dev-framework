@@ -10,6 +10,7 @@
 | 任务分支 | `docs/zcode/gov-profile-decision-model` |
 | 合并目标 | `develop` |
 | worktree | `../ai-dev-framework-wt/gov-profile-decision-model` |
+| 集成分支内容提交 | `777c362` |
 
 ## 1. 范围
 
@@ -39,7 +40,7 @@
 
 | 层级 | AC | 命令或步骤 | 环境 | 结果 | 🔴 未验证 |
 | --- | --- | --- | --- | --- | --- |
-| 文档一致性 | AC-GOV-01/02 | `rg` 定位四维、决策门及引用；`git diff --check` | 本地 | 通过：旧 spike/固定行数规则无残留，四维与决策包跨权威文件一致 | 无 |
+| 文档一致性 | AC-GOV-01/02 | `rg -n '采用画像|任务类型|运行责任|重大决定|待决定' AGENTS.md SPEC.md TASK.md project-conventions.md README.md templates examples tasks`；`rg -n '现有权威来源是否已经明确决定|只有尚未确定且影响重大' AGENTS.md project-conventions.md`；`git diff --check` | 本地 | 通过：四维正交，所有授权入口均保留“尚未确定且影响重大”双条件，决策包包含事实与未知 | 无 |
 
 外部写调用数：0
 

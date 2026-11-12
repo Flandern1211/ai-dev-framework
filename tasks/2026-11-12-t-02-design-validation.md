@@ -10,6 +10,7 @@
 | 任务分支 | `docs/zcode/gov-design-validation` |
 | 合并目标 | `develop`（先合入 T-01） |
 | worktree | `../ai-dev-framework-wt/gov-profile-decision-model` |
+| 集成分支内容提交 | `deedcc3` |
 
 ## 1. 范围
 
@@ -39,7 +40,7 @@
 
 | 层级 | AC | 命令或步骤 | 环境 | 结果 | 🔴 未验证 |
 | --- | --- | --- | --- | --- | --- |
-| 文档一致性 | AC-GOV-03 | `rg` 定位判定门、证据阶梯、有界影响、预算、三态与代码处置；`git diff --check` | 本地 | 通过：权威规则、工程细则、模板和走查一致；未创建实验目录 | 无 |
+| 文档一致性 | AC-GOV-03 | `rg -n '设计验证门|最小充分|有界影响|预算|结论不足|最小测试、基准、夹具或固定样本' AGENTS.md SPEC.md TASK.md project-conventions.md templates examples tasks`；`find . -maxdepth 3 -type d \( -name demo -o -name demos -o -name experiments \) -print`；`git diff --check` | 本地 | 通过：权威规则、工程细则、模板和走查的代码处置一致；未创建实验目录 | 无 |
 
 外部写调用数：0
 
