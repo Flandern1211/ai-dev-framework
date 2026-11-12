@@ -40,7 +40,17 @@
 
 | 层级 | AC | 命令或步骤 | 环境 | 结果 | 🔴 未验证 |
 | --- | --- | --- | --- | --- | --- |
-| 文档一致性 | AC-GOV-01/02 | `rg -n '采用画像|任务类型|运行责任|重大决定|待决定' AGENTS.md SPEC.md TASK.md project-conventions.md README.md templates examples tasks`；`rg -n '现有权威来源是否已经明确决定|只有尚未确定且影响重大' AGENTS.md project-conventions.md`；`git diff --check` | 本地 | 通过：四维正交，所有授权入口均保留“尚未确定且影响重大”双条件，决策包包含事实与未知 | 无 |
+| 文档一致性 | AC-GOV-01/02 | 下方命令与语义对照步骤 | 本地 Git Bash | 通过：双条件、决策包和四维模型已对齐；原审查问题关闭 | 无 |
+
+在仓库根目录执行：
+
+```bash
+rg -n '采用画像|任务类型|运行责任|重大决定|待决定' AGENTS.md SPEC.md TASK.md project-conventions.md README.md templates examples
+rg -n '现有权威来源是否已经明确决定|只有尚未确定且影响重大' AGENTS.md
+git diff --check
+```
+
+预期及语义对照：将 AGENTS 第 3 节与第 4 节逐条对照 SPEC 质量门、工程约定第 8 节，已批准决定不重复询问；未决重大选择须交决策包；小而可逆的实现不询问；真实外部操作仍需授权。实际：对照通过，补丁检查退出码 0。初次独立审查发现授权章节绕过双条件，根因是同一触发规则被重复表述；已补充明确的已决例外并复验。
 
 外部写调用数：0
 

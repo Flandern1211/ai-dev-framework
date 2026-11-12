@@ -40,7 +40,18 @@
 
 | 层级 | AC | 命令或步骤 | 环境 | 结果 | 🔴 未验证 |
 | --- | --- | --- | --- | --- | --- |
-| 文档一致性 | AC-GOV-04/05 | `rg -n 'RUNBOOK|运行设计|运行手册|真实部署|操作授权' AGENTS.md SPEC.md project-conventions.md README.md templates examples tasks`；`test -f templates/RUNBOOK.md && test ! -e docs/RUNBOOK.md`；`rg -n '^(demo/|demos/|experiments/|RUNBOOK.md|docs/RUNBOOK.md)$' .gitignore`（预期无输出）；`git diff --check` | 本地 | 通过：职责、触发条件和授权边界一致；模板存在且根目录无空手册；忽略规则未固化手册或实验目录 | 无 |
+| 文档一致性 | AC-GOV-04/05 | 下方命令与语义对照步骤 | 本地 Git Bash | 通过：设计与操作职责分开；模板存在，无空手册或对应忽略项 | 无 |
+
+在仓库根目录执行：
+
+```bash
+rg -n 'RUNBOOK|运行设计|运行手册|真实部署|操作授权' AGENTS.md SPEC.md project-conventions.md README.md templates examples
+test -f templates/RUNBOOK.md && test ! -e docs/RUNBOOK.md
+rg -n '^(demo/|demos/|experiments/|RUNBOOK.md|docs/RUNBOOK.md)$' .gitignore
+git diff --check
+```
+
+预期及语义对照：检查 SPEC 只定义运行责任与约束，RUNBOOK 模板只有操作步骤，沿用现有手册且真实部署仍须授权。实际：对照通过，模板条件检查退出码 0；忽略项查询无输出、退出码 1（预期无匹配）；补丁检查退出码 0。链接按模板复制后的路径核对，不将可选手册误判为本框架必备文件。
 
 外部写调用数：0
 

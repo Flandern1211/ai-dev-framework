@@ -40,7 +40,17 @@
 
 | 层级 | AC | 命令或步骤 | 环境 | 结果 | 🔴 未验证 |
 | --- | --- | --- | --- | --- | --- |
-| 文档一致性 | AC-GOV-03 | `rg -n '设计验证门|最小充分|有界影响|预算|结论不足|最小测试、基准、夹具或固定样本' AGENTS.md SPEC.md TASK.md project-conventions.md templates examples tasks`；`find . -maxdepth 3 -type d \( -name demo -o -name demos -o -name experiments \) -print`；`git diff --check` | 本地 | 通过：权威规则、工程细则、模板和走查的代码处置一致；未创建实验目录 | 无 |
+| 文档一致性 | AC-GOV-03 | 下方命令与语义对照步骤 | 本地 Git Bash | 通过：证据阶梯、影响边界、三态、预算和代码处置一致；未创建实验目录 | 无 |
+
+在仓库根目录执行：
+
+```bash
+rg -n '设计验证门|最小充分|有界影响|预算|结论不足|最小测试、基准、夹具或固定样本' AGENTS.md SPEC.md TASK.md project-conventions.md templates examples
+find . -maxdepth 3 -type d \( -name demo -o -name demos -o -name experiments \) -print
+git diff --check
+```
+
+预期及语义对照：对照 AGENTS 设计验证流程、SPEC 第 5 节、工程约定第 3.4 节与任务模板。临时实现默认删除；保留的最小测试、基准、夹具、固定样本纳入检查；产品代码另过正式质量门。走查中已按计划采样但结论不足，与环境缺失未执行分别判定。实际：对照通过，目录查询无输出，补丁检查退出码 0。初次独立审查发现保留范围遗漏与模板放宽，已统一列表并移除仅凭期限保留临时代码的入口。
 
 外部写调用数：0
 
